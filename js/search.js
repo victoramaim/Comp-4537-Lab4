@@ -1,11 +1,13 @@
 async function searchDefinition() {
-    const word = document.getElementById('searchInput').value;
-    const response = await fetch(`https://yourDomainName2.wyz/api/definitions/?word=${word}`);
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "http://localhost:3000/api/definitions/?word=" + document.getElementById('searchInput').value, true);
+    xhttp.send();
 
-    if (response.ok) {
-        const data = await response.json();
-        document.getElementById('searchResult').textContent = `Word: ${data.word}, Definition: ${data.definition}`;
-    } else {
-        document.getElementById('searchResult').textContent = `Error: ${response.statusText}`;
-    }
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById('searchResult').textContent = `Word: ${JSON.parse(this.responseText).word}, Definition: ${JSON.parse(this.responseText).definition}`;
+        } else {
+            document.getElementById('searchResult').textContent = `Error: ${this.statusText}`;
+        }
+    };
 }

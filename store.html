@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dictionary - Store Definition</title>
+    <script src="/js/store.js"></script>
 </head>
 <body>
     <h1>Store Definition</h1>
@@ -12,10 +13,8 @@
         <input type="text" id="wordInput" name="wordInput" required><br><br>
         <label for="definitionInput">Definition:</label><br>
         <textarea id="definitionInput" name="definitionInput" rows="4" cols="50" required></textarea><br><br>
-        <button type="submit">Submit</button>
+        <button type="submit" onclick="storeDefinition()">Submit</button>
     </form>
     <p id="feedback"></p>
-
-    <script src="store.js"></script>
 </body>
 </html>

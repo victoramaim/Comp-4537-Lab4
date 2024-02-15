@@ -3,7 +3,7 @@ const url = require('url');
 
 let dictionary = [];
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(function(req, res) {
     const reqUrl = url.parse(req.url, true);
 
     if (req.method === 'POST' && reqUrl.pathname === '/api/definitions') {
@@ -42,8 +42,4 @@ const server = http.createServer((req, res) => {
         res.writeHead(404, { 'Content-Type': 'text/plain' });
         res.end('Page not found');
     }
-});
-
-server.listen(3000, () => {
-    console.log('Server is running on port 3000');
-});
+}). listen(3000);
